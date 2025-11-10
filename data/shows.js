@@ -5,17 +5,21 @@ window.shows = [
     description: "A musical thriller that explores the price of fame.",
     image: "assets/imgages/thegetout.jpg",
     files: [
-      { name: "Script PDF", url: "showsfiles/thegetout/script.pdf" },
-      { name: "Sheet Music", url: "showsfiles/thegetout/sheet_music.zip" }
+      { name: "Script PDF (UNAVAILABE)", url: "" },
+      { name: "Sheet Music (UNAVAILABE)", url: "" }
+      { name: "Rehearsal Tracks (UNAVAILABE)", url: "" }
+      { name: "Backing Tracks (UNAVAILABE)", url: "" }
     ]
   },
   {
     id: 2,
-    title: "Moonlight Stage",
-    description: "A drama about ambition, love, and the power of performance.",
-    image: "img/moonlight.jpg",
+    title: "Granny Got Stuck In The Alexa",
+    description: "The second show available in our series of 'Granny Got Stuck'. This show explores Granny as she gets stuck in the Alexa!",
+    image: "assets/images/grannyalexa.jpg",
     files: [
-      { name: "Script PDF", url: "shows_files/moonlight/script.pdf" }
+      { name: "Information Package", url: "showfiles/granny/alexa/GrannyAlexaInfo.pdf" }
+      { name: "Script", url: "showfiles/granny/alexa/GrannyAlexaScript.pdf" }
+      { name: "Audition Pieces", url: "showfiles/granny/alexa/GrannyAlexaAuditions.pdf" }
     ]
   }
 ];
