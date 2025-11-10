@@ -6,8 +6,26 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <h1>Your Licensed Shows</h1>
-  <div id="showsContainer"></div>
+  <header>
+    <h1>Your Dashboard</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="contact.html">Contact</a>
+      <button id="logoutBtn">Logout</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="userInfo"></section>
+    <section id="licensedShows">
+      <h2>Your Licensed Shows</h2>
+      <div id="showsContainer"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Spotlight Licensing</p>
+  </footer>
 
   <script src="data/shows.js"></script>
   <script src="data/licenseAssignment.js"></script>
