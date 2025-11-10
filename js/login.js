@@ -8,6 +8,6 @@ document.getElementById('loginForm').addEventListener('submit', e => {
     localStorage.setItem('loggedInUser', JSON.stringify(user));
     window.location.href = 'dashboard.html';
   } else {
-    alert('Invalid login');
+    alert('Invalid username or password.');
   }
 });
