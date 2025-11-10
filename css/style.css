@@ -1,0 +1,190 @@
+/* --- General Reset & Base Styles --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+  background: #111; /* Stage black */
+  color: #eee;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* --- Header & Navigation --- */
+header {
+  background: linear-gradient(135deg, #1a1a1a, #000);
+  color: #f4d03f; /* Gold accent */
+  text-align: center;
+  padding: 2em 1em;
+  border-bottom: 3px solid #f4d03f;
+  box-shadow: 0 0 20px rgba(244, 208, 63, 0.3);
+}
+
+header h1 {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 0.5em;
+}
+
+nav {
+  margin-top: 10px;
+}
+
+nav a, nav button {
+  color: #f4d03f;
+  text-decoration: none;
+  margin: 0 12px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+nav a:hover, nav button:hover {
+  color: #ffffff;
+}
+
+/* --- Footer --- */
+footer {
+  background: #000;
+  color: #aaa;
+  text-align: center;
+  padding: 1.5em;
+  border-top: 2px solid #f4d03f;
+  font-size: 0.9em;
+}
+
+/* --- Sections --- */
+section {
+  padding: 2em;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* --- Show Cards --- */
+.show-card {
+  background: linear-gradient(135deg, #222, #111);
+  border: 1px solid #333;
+  border-left: 5px solid #f4d03f;
+  padding: 1.5em;
+  margin: 1.5em 0;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.show-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 25px rgba(244, 208, 63, 0.25);
+}
+
+.show-card h3 {
+  color: #f4d03f;
+  font-family: "Playfair Display", serif;
+  margin-bottom: 0.3em;
+}
+
+.show-card p {
+  color: #ddd;
+  margin-bottom: 0.8em;
+}
+
+/* --- Download Links --- */
+.downloads a {
+  display: inline-block;
+  margin: 4px 8px 4px 0;
+  color: #111;
+  background: #f4d03f;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.downloads a:hover {
+  background: #fff176;
+  transform: scale(1.05);
+}
+
+/* --- Forms (Login & Contact) --- */
+.login-form, .contact-form {
+  background: linear-gradient(145deg, #1b1b1b, #121212);
+  padding: 2em;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(244, 208, 63, 0.15);
+  margin: 3em auto;
+  max-width: 400px;
+}
+
+.login-form input,
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  background: #222;
+  border: 1px solid #333;
+  color: #eee;
+  padding: 0.8em;
+  margin-bottom: 1em;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.contact-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+button,
+.login-form button,
+.contact-form button {
+  background: #f4d03f;
+  color: #111;
+  font-weight: 600;
+  border: none;
+  padding: 0.8em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s;
+  width: 100%;
+}
+
+button:hover {
+  background: #fff176;
+  transform: scale(1.03);
+}
+
+/* --- User Info Section --- */
+#userInfo {
+  text-align: center;
+  margin-top: 2em;
+  color: #ccc;
+  font-size: 1.1em;
+}
+
+#userInfo strong {
+  color: #f4d03f;
+}
+
+/* --- Responsiveness --- */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.5em;
+  }
+
+  .show-card {
+    padding: 1em;
+  }
+
+  nav a, nav button {
+    margin: 0 6px;
+    font-size: 0.9em;
+  }
+}
