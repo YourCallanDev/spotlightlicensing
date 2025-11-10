@@ -1,73 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Dashboard - Spotlight Licensing</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.3/dist/tailwind.min.css" rel="stylesheet">
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <meta charset="UTF-8">
+  <title>Dashboard | Spotlight Licensing</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="bg-gradient-to-b from-purple-900 via-purple-800 to-indigo-900 text-white">
-<header class="p-4 flex justify-between items-center">
-  <h1 class="text-3xl font-bold text-yellow-400">My Licensed Shows</h1>
-  <button id="logoutBtn" class="bg-cyan-500 px-4 py-2 rounded hover:bg-cyan-400">Logout</button>
-</header>
-<main class="container mx-auto p-6">
-  <div id="licensesGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
-</main>
+<body>
+  <h1>Your Licensed Shows</h1>
+  <div id="showsContainer"></div>
 
-<div id="pdfModal" class="fixed inset-0 bg-black bg-opacity-70 hidden justify-center items-center">
-  <div class="bg-gray-900 p-4 rounded w-4/5 h-4/5 relative">
-    <button onclick="closeModal()" class="absolute top-2 right-2 text-yellow-400 font-bold">Close</button>
-    <iframe id="pdfFrame" src="" class="w-full h-full"></iframe>
-  </div>
-</div>
-
-<script>
-const firebaseConfig = {
-  apiKey: "AIzaSyCe4ThUzpeUandbyGFoBiKBdzLPBBqg1UU",
-  authDomain: "spotlightlicensing-1.firebaseapp.com",
-  projectId: "spotlightlicensing-1"
-};
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
-const db = firebase.firestore();
-
-const shows = [
-  {id:"getout", title:"The Get Out", pdf:"https://raw.githubusercontent.com/YourCallanDev/spotlightlicensing/main/materials/getout.pdf", zip:"https://raw.githubusercontent.com/YourCallanDev/spotlightlicensing/main/materials/getout.zip"},
-  {id:"spotlight", title:"Spotlight Fever", pdf:"https://raw.githubusercontent.com/YourCallanDev/spotlightlicensing/main/materials/spotlight.pdf", zip:"https://raw.githubusercontent.com/YourCallanDev/spotlightlicensing/main/materials/spotlight.zip"}
-];
-
-auth.onAuthStateChanged(user => {
-  if(!user) window.location = 'login.html';
-  const userId = user.uid;
-  db.collection("users").doc(userId).get().then(doc => {
-    const licenses = doc.data().licenses || {};
-    const grid = document.getElementById("licensesGrid");
-    grid.innerHTML = "";
-    Object.keys(licenses).forEach(showId => {
-      const show = shows.find(s=>s.id===showId);
-      const lic = licenses[showId];
-      const card = document.createElement("div");
-      card.className="bg-purple-800 rounded-lg p-4 shadow-lg hover:shadow-cyan-500/50 transition-all";
-      card.innerHTML=`
-        <h2 class="text-2xl font-bold text-yellow-400">${show.title}</h2>
-        <p class="mb-2">License: ${lic.licenseNumber}</p>
-        <p class="mb-2">Expires: ${lic.expiry}</p>
-        <button onclick="openPDF('${show.pdf}')" class="bg-cyan-500 text-black px-4 py-2 rounded hover:bg-cyan-400 mb-2">View PDF</button>
-        <a href="${show.zip}" download class="bg-yellow-400 text-black px-4 py-2 rounded hover:bg-yellow-300">Download Materials</a>
-      `;
-      grid.appendChild(card);
-    });
-  });
-});
-
-document.getElementById("logoutBtn").addEventListener("click", ()=>auth.signOut().then(()=>window.location='login.html'));
-
-function openPDF(url){document.getElementById("pdfFrame").src=url;document.getElementById("pdfModal").classList.remove("hidden");}
-function closeModal(){document.getElementById("pdfModal").classList.add("hidden");}
-</script>
+  <script src="data/shows.js"></script>
+  <script src="data/licenseAssignment.js"></script>
+  <script src="js/dashboard.js"></script>
 </body>
 </html>
