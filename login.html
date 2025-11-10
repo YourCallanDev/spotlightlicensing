@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login - Spotlight Licensing</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.3/dist/tailwind.min.css" rel="stylesheet">
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+</head>
+<body class="bg-gradient-to-b from-purple-900 via-purple-800 to-indigo-900 text-white flex items-center justify-center h-screen">
+<div class="bg-purple-800 p-8 rounded-lg shadow-lg w-full max-w-md">
+  <h1 class="text-3xl font-bold mb-6 text-yellow-400">Login / Register</h1>
+  <input id="email" type="email" placeholder="Email" class="w-full p-2 mb-4 rounded"/>
+  <input id="password" type="password" placeholder="Password" class="w-full p-2 mb-4 rounded"/>
+  <div class="flex justify-between">
+    <button id="loginBtn" class="bg-cyan-500 px-4 py-2 rounded hover:bg-cyan-400">Login</button>
+    <button id="registerBtn" class="bg-purple-600 px-4 py-2 rounded hover:bg-purple-500">Register</button>
+  </div>
+</div>
+
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyCe4ThUzpeUandbyGFoBiKBdzLPBBqg1UU",
+  authDomain: "spotlightlicensing-1.firebaseapp.com",
+  projectId: "spotlightlicensing-1"
+};
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+document.getElementById("loginBtn").addEventListener("click", () => {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  auth.signInWithEmailAndPassword(email, password)
+    .then(() => window.location = "dashboard.html")
+    .catch(err => alert(err.message));
+});
+
+document.getElementById("registerBtn").addEventListener("click", () => {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  auth.createUserWithEmailAndPassword(email, password)
+    .then(cred => db.collection("users").doc(cred.user.uid).set({email, role:"user", licenses:{}}))
+    .then(() => window.location = "dashboard.html")
+    .catch(err => alert(err.message));
+});
+</script>
+</body>
+</html>
