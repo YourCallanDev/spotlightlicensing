@@ -8,21 +8,39 @@
 <body>
   <header>
     <h1>Welcome to Spotlight Licensing</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="login.html">Login</a>
+      <a href="contact.html">Contact</a>
+    </nav>
   </header>
-  
-  <section id="showsSection"></section>
+
+  <section id="welcome">
+    <p>Welcome to Spotlight Licensing — your one-stop portal to license, view, and download show materials.</p>
+  </section>
+
+  <section id="showsSection">
+    <h2>Available Shows</h2>
+    <div id="showsContainer"></div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Spotlight Licensing</p>
+  </footer>
 
   <script src="data/shows.js"></script>
   <script>
-    const section = document.getElementById('showsSection');
+    const container = document.getElementById('showsContainer');
     shows.forEach(show => {
       const div = document.createElement('div');
+      div.classList.add('show-card');
       div.innerHTML = `
-        <h2>${show.title}</h2>
+        <h3>${show.title}</h3>
         <p>${show.description}</p>
       `;
-      section.appendChild(div);
+      container.appendChild(div);
     });
   </script>
 </body>
 </html>
+
